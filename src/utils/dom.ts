@@ -50,7 +50,7 @@ export function insertDomNodes(
   const scale = originNode?.getBoundingClientRect().width! / standard; // 650是A4在IE上的宽度
   // if (firstNode.querySelector('col').)
   Array.from(firstNode.querySelectorAll("col")).forEach((col) => {
-    let width = col.getAttribute("width");
+    const width = col.getAttribute("width");
     if (width) {
       const calc = parseFloat(width) / scale;
       col.setAttribute("width", (calc < 36 ? 36 : calc).toFixed(0));
