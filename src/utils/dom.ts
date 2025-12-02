@@ -19,17 +19,17 @@ export function insertDomNodes(
 
   const node = originNode.cloneNode(true);
 
-  let firstNode = document.createElement("div");
+  const firstNode = document.createElement("div");
   firstNode.setAttribute("class", upNodesClassName[0]);
 
-  let standardNode = document.createElement("div");
+  const standardNode = document.createElement("div");
   // 172mm是A4去除了页边距的宽度
   standardNode.setAttribute("style", "width: 172mm");
   ifrWindow.document.body.appendChild(standardNode);
   // 类似于操作链表，把头节点赋值给临时节点，操作临时节点，最后返回头节点即可
   let tempNode = firstNode;
   upNodesClassName.slice(1).forEach((item) => {
-    let div = document.createElement("div");
+    const div = document.createElement("div");
     div.setAttribute("class", item);
     tempNode.appendChild(div);
     tempNode = tempNode.childNodes[0] as HTMLDivElement;
@@ -52,7 +52,7 @@ export function insertDomNodes(
   Array.from(firstNode.querySelectorAll("col")).forEach((col) => {
     let width = col.getAttribute("width");
     if (width) {
-      let calc = parseFloat(width) / scale;
+      const calc = parseFloat(width) / scale;
       col.setAttribute("width", (calc < 36 ? 36 : calc).toFixed(0));
     }
   });
