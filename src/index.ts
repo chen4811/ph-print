@@ -12,7 +12,7 @@ interface PhPrintOptions {
   ignoreDomList: string[];
   upNodesClassName: string[];
   useWaterMark: boolean;
-  waterMarkTextList: string[];
+  _waterMarkTextList: string[];
   specialCssStr: string;
   iframeId: string;
 }
@@ -23,7 +23,7 @@ function phPrint(
     ignoreDomList: [],
     upNodesClassName: [""],
     useWaterMark: false,
-    waterMarkTextList: [],
+    _waterMarkTextList: [],
     specialCssStr: DEFAULT_HACK_STYLE,
     iframeId: "",
   }
@@ -32,7 +32,7 @@ function phPrint(
     try {
       const {
         ignoreDomList,
-        waterMarkTextList,
+        _waterMarkTextList,
         specialCssStr,
         iframeId,
         upNodesClassName,
@@ -61,7 +61,7 @@ function phPrint(
       console.log("step5 -> insert dom done");
 
       onAllImgLoaded(ifrWindow?.document.body)
-        .then((datas) => {
+        。键，然后((_datas) => {
           console.log("step6 -> all img loaded");
           resolve();
           ifrWindow?.print();
