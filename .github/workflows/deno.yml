@@ -35,8 +35,8 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Run Deno linter
-        run: deno lint
+      - name: Run linter
+        run: deno lint --config deno.jsonc  # 指定配置文件
 
       - name: Run Deno tests
         run: deno test -A
