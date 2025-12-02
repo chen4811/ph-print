@@ -5,7 +5,7 @@ export async function onAllImgLoaded(
   const imgNodes =
     root instanceof HTMLImageElement ? [root] : root.querySelectorAll("img");
 
-  let imgArr = Array.from(imgNodes).filter((img) => {
+  const imgArr = Array.from(imgNodes).filter((img) => {
     const isNull = img.getAttribute("src") === "";
     const isWrongBase64Url =
       (img.getAttribute("src")?.indexOf("data:image/png;64") ?? -1) > -1;
