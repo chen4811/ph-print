@@ -1,4 +1,3 @@
-# .github/workflows/build-test.yml
 name: Build and Test
 
 on:
@@ -18,6 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 1. 先处理 Node 相关依赖和构建（生成 dist）
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -28,15 +28,24 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build  # 执行 rollup 构建，生成 dist 目录
+        run: npm run build  # 生成 dist 目录
 
+      # 2. 处理 Deno 相关步骤
       - name: Setup Deno
         uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31  # v1.1.2
         with:
           deno-version: v1.x
+          cache: true  # 启用 Deno 缓存加速
+
+      # 3. 确保 deno.jsonc 存在（关键：忽略 dist 目录）
+      - name: Create deno.jsonc if not exists
+        run: |
+          if [ ! -f "deno.jsonc" ]; then
+            echo '{ "lint": { "exclude": ["dist/"] } }' > deno.jsonc
+          fi
 
       - name: Run linter
-        run: deno lint --config deno.jsonc  # 指定配置文件
+        run: deno lint --config deno.jsonc  # 使用配置忽略 dist
 
       - name: Run Deno tests
         run: deno test -A
