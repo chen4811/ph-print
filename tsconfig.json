@@ -65,5 +65,8 @@
     /* Advanced Options */
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
+    "target": "ES2020",  // 提高目标版本，减少 var 生成
+    "module": "ES2020",
+    "downlevelIteration": false  // 避免为迭代器生成 var
   }
 }
