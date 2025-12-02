@@ -1,6 +1,6 @@
 /**
  * 插入 DOM 节点
- * 需要传入打印的元素的父节点的 class 集合，不然可能会导致页面打印出来样式有缺失
+ * 需要传入打印的元素的父节点的 class 集合，否则可能会导致页面打印出来样式有缺失
  *
  * upNodesClassName: ['root', 'a', 'b']
  */
@@ -50,7 +50,7 @@ export function insertDomNodes(
   const scale = originNode?.getBoundingClientRect().width! / standard; // 650是A4在IE上的宽度
   // if (firstNode.querySelector('col').)
   Array.from(firstNode.querySelectorAll("col")).forEach((col) => {
-    const width = col.getAttribute("width"); 
+    const width = col.getAttribute("width");
     if (width) {
       const calc = parseFloat(width) / scale;
       col.setAttribute("width", (calc < 36 ? 36 : calc).toFixed(0));
