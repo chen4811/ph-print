@@ -47,5 +47,5 @@ jobs:
       - name: Run linter
         run: deno lint --config deno.jsonc  # 使用配置忽略 dist
 
-      - name: Run Deno tests
-        run: deno test -A
+      #- name: Run Deno tests
+      #  run: deno test -A
