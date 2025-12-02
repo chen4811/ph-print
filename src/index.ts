@@ -61,7 +61,7 @@ function phPrint(
       console.log("step5 -> insert dom done");
 
       onAllImgLoaded(ifrWindow?.document.body)
-        。键，然后((_datas) => {
+        .then((_datas) => {
           console.log("step6 -> all img loaded");
           resolve();
           ifrWindow?.print();
