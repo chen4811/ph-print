@@ -3,7 +3,7 @@ name: Deno & Build
 
 on:
   push:
-    分支: ["main"]
+    branches: ["main"]
   pull_request:
     branches: ["main"]
 
